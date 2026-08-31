@@ -3,7 +3,14 @@ from agent import TaskPilot
 agent = TaskPilot()
 
 print("Welcome to TaskPilot AI!")
-print("Commands: add <task>, tasks, complete <number>, tools, exit")
+print("Commands:")
+print("add <task>")
+print("tasks")
+print("complete <number>")
+print("tools")
+print("ai <your question>")
+print("exit")
+
 
 while True:
     command = input("\nYou: ")
@@ -29,5 +36,10 @@ while True:
     elif command.lower() == "tools":
         print(agent.get_tools())
 
+    elif command.lower().startswith("ai "):
+        message = command[3:]
+        print("\nTaskPilot AI:")
+        print(agent.ask_ai(message))
+
     else:
-        print("Try: add <task>, tasks, complete <number>, tools, or exit")
+        print("Try: add, tasks, complete, tools, ai, or exit")
