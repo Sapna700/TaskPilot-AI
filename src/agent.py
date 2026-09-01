@@ -14,15 +14,20 @@ class TaskPilot:
         Add a new task with priority level.
         Priority can be: 'high', 'medium', 'low'
         """
+        priority = (priority or "medium").lower()
         if priority not in ['high', 'medium', 'low']:
             return "Error: Invalid priority. Use: high, medium, or low"
-        
+
+        task = (task or "").strip()
+        if not task:
+            return "Error: Task title cannot be empty."
+
         task_dict = {
             "title": task,
-            "priority": priority.lower(),
+            "priority": priority,
             "completed": False
         }
-        
+
         self.tasks.append(task_dict)
         return f"Task added: {task} (Priority: {priority.capitalize()})"
 
